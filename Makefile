@@ -1,0 +1,59 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    MAKEFILE                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/24 03:01:09 by chanheki          #+#    #+#              #
+#    Updated: 2022/11/24 03:05:10 by chanheki         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+
+LIB_DIR = ./lib
+LIBFT = libft.a
+
+CC	=	cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcsu
+
+SRCS =	/push_swap.c\
+
+		/args/arg_indexer.c\
+		/args/arg_parser.c\
+		/args/arg_validator.c\
+
+		/cmds/cmd_push.c\
+		/cmds/cmd_reverse_rotate.c\
+		/cmds/cmd_rotate.c\
+		/cmds/cmd_swap.c\
+
+		/stacks/stack_handler.c\
+		/stacks/stack_utils.c\
+		/error_exiter.c
+
+OBJS = $(SRCS:.c=.o)
+
+$(NAME) : $(OBJS)
+	make -C $(LIB_DIR)
+	cp $(LIB_DIR)/$(LIBFT) $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB_DIR)/$(LIBFT) -o $(NAME)
+	make fclean -C $(LIB_DIR)
+
+all: $(NAME)
+
+clean:
+	rm -rf $(OBJS)
+
+fclean : clean
+	make -C $(LIB_DIR) fclean
+	rm -rf $(NAME)
+
+re: 
+	make fclean
+	make all
+
+.PHONY = all clean fclean re

@@ -6,23 +6,11 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 02:59:39 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 02:59:40 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:34:11 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <stddef.h>
-
-int	ft_isdigit(int c);
-
-static int	ft_isspace(const char str)
-{
-	if (str == ' ' || str == '\n' || str == '\t')
-		return (1);
-	if (str == '\v' || str == '\f' || str == '\r')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
 long long	ft_atoll(const char *str)
 {

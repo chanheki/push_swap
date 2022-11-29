@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    MAKEFILE                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 03:01:09 by chanheki          #+#    #+#              #
-#    Updated: 2022/11/24 03:05:10 by chanheki         ###   ########.fr        #
+#    Updated: 2022/11/29 21:38:43 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,16 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rcsu
 
-SRCS =	/push_swap.c\
-
-		/args/arg_indexer.c\
-		/args/arg_parser.c\
-		/args/arg_validator.c\
-
-		/cmds/cmd_push.c\
-		/cmds/cmd_reverse_rotate.c\
-		/cmds/cmd_rotate.c\
-		/cmds/cmd_swap.c\
-
-		/stacks/stack_handler.c\
-		/stacks/stack_utils.c\
-		/error_exiter.c
+SRCS =	push_swap.c\
+		_args/arg_indexer.c\
+		_args/arg_parser.c\
+		_args/arg_validator.c\
+		cmds/cmd_push.c\
+		cmds/cmd_reverse_rotate.c\
+		cmds/cmd_rotate.c\
+		cmds/cmd_swap.c\
+		stacks/stack_utils.c\
+		error_exitor.c
 
 OBJS = $(SRCS:.c=.o)
 

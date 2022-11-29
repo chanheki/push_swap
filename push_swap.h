@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:21:49 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 06:06:29 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/11/29 23:13:54 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h> // TODO delete
 # include <unistd.h>
-# include "../lib/libft.h"
+# include "lib/libft.h"
 
 typedef struct s_node
 {
@@ -49,13 +50,16 @@ void	arg_validator(int argc, char **argv);
 void	error_exit(void);
 void	init_stacks(t_stack *stack_a, t_stack *stack_b);
 void	arg_parser(int argc, char **argv, t_stack *stack_a);
-void	arg_indexer(t_stack *stack_a);
+
+void	arg_indexer(t_stack *stack_a); // TODO delete
+void	show_stack(t_stack *stack); // TODO delete
+void	show_stack_top_bottom(t_stack *stack); // TODO delete
+
 t_node	*new_node(int data);
 t_node	*last_node(t_stack *stack);
 
 void	swap(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case);
-void	push_a(t_stack *stack_a, t_stack *stack_b, t_bool is_print);
-void	push_b(t_stack *stack_b, t_stack *stack_a, t_bool is_print);
+void	push(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case);
 void	push_b_lowest(t_stack *stack_a, t_stack *stack_b);
 void	push_b_second_lowest(t_stack *stack_a, t_stack *stack_b);
 

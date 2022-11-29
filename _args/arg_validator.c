@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 00:15:33 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 02:58:39 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:45:26 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static	int	digit_checker(char *str)
 	{
 		if (!ft_isdigit(*str))
 			return (0);
-	str++;
+		str++;
 	}
 	return (1);
 }
 
 static int	int_checker(char *str)
 {
-	long long	temp;
+	long long	check;
 
-	temp = ft_atoll(str);
-	if (temp >= -2147483648 && temp <= 2147483647)
+	check = ft_atoll(str);
+	if (check >= -2147483648 && check <= 2147483647)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:23:28 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 06:07:01 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/11/29 23:18:12 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,28 @@ t_node	*last_node(t_stack *stack)
 	while (node->next != NULL)
 		node = node->next;
 	return (node);
+}
+
+//TODO show stack delete
+void	show_stack(t_stack *stack)
+{
+	t_node	*node;
+
+	node = stack->top;
+	while (node != NULL)
+	{
+		printf("%d \n", node->value);
+		node = node->next;
+	}
+}
+
+//TODO show top delete
+void	show_stack_top_bottom(t_stack *stack)
+{
+	if (stack->top->value)
+		printf("stack top: %d \n", stack->top->value);
+	if (stack->bottom)
+		printf("stack bottom: %d \n", stack->bottom->value);
+	else
+		printf("stack bottom: null \n");
 }

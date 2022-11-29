@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   arg_indexer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 01:55:30 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 01:58:35 by chanheki         ###   ########.fr       */
+/*   Created: 2022/11/24 00:15:22 by chanheki          #+#    #+#             */
+/*   Updated: 2022/11/29 18:56:27 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	error_exit(void)
+// TODO delete
+void	arg_indexer(t_stack *stack_a)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
+	t_node	*temp;
+	t_node	*temp_2;
+
+	temp = stack_a->top;
+	while (temp)
+	{
+		temp_2 = stack_a->top;
+		while (temp_2)
+		{
+			if (temp->value > temp_2->value)
+				temp->index++;
+			temp_2 = temp_2->next;
+		}
+		temp = temp->next;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 12:06:46 by chanheki          #+#    #+#              #
-#    Updated: 2022/09/14 18:17:26 by chanheki         ###   ########.fr        #
+#    Updated: 2022/11/29 21:39:31 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS 		=	ft_isalpha.c \
 				ft_isalnum.c \
 				ft_isascii.c \
 				ft_isprint.c \
+				ft_isspace.c \
 				ft_strlen.c \
 				ft_memset.c \
 				ft_bzero.c \
@@ -35,6 +36,7 @@ SRCS 		=	ft_isalpha.c \
 				ft_memcmp.c \
 				ft_strnstr.c \
 				ft_atoi.c \
+				ft_atoll.c \
 				ft_calloc.c \
 				ft_strdup.c\
 				ft_substr.c \

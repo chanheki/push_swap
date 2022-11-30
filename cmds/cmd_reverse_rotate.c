@@ -12,47 +12,38 @@
 
 #include "../push_swap.h"
 
-void	rotate_reverse_a(t_stack *stack_a, t_bool is_print)
+static int	_reverse_rotate(t_stack *stack)
 {
-	t_node	*temp_bottom;
-	t_node	*temp_bottom_prev;
-
-	if (stack_a->size <= 1)
-		return ;
-	temp_bottom = stack_a->bottom;
-	temp_bottom_prev = stack_a->bottom->prev;
-	temp_bottom->next = stack_a->top;
-	temp_bottom->prev = NULL;
-	stack_a->top = temp_bottom;
-	stack_a->bottom = temp_bottom_prev;
-	stack_a->bottom->next = NULL;
-	if (is_print == TRUE)
-		write(1, "rra\n", 4);
+	t_node *temp;
+	
+	if (stack->size <= 1)
+		return (0);
+	temp = stack->bottom->prev;
+	stack->bottom->next = stack->top;
+	stack->top->prev = stack->bottom;
+	stack->top = stack->top->prev;
+	stack->bottom = temp;
+	stack->top->prev = NULL;
+	stack->bottom->next = NULL;
+	return (1);
 }
 
-void	rotate_reverse_b(t_stack *stack_b, t_bool is_print)
+void	reverse_rotate(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case)
 {
-	t_node	*temp_bottom;
-	t_node	*temp_bottom_prev;
-
-	if (stack_b->size <= 1)
-		return ;
-	temp_bottom = stack_b->bottom;
-	temp_bottom_prev = stack_b->bottom->prev;
-	temp_bottom->next = stack_b->top;
-	temp_bottom->prev = NULL;
-	stack_b->top = temp_bottom;
-	stack_b->bottom = temp_bottom_prev;
-	stack_b->bottom->next = NULL;
-	if (is_print == TRUE)
-		write(1, "rrb\n", 4);
-}
-
-void	rotate_reverse_both(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a->size <= 1 || stack_a->size <= 1)
-		return ;
-	rotate_reverse_a(stack_a, FALSE);
-	rotate_reverse_b(stack_b, FALSE);
-	write(1, "rrr\n", 4);
+	if (cmd_case == RRA)
+	{
+		if (_reverse_rotate(stack_a))
+			write(1, "rra\n", 4);
+	}
+	else if (cmd_case == RRB)
+	{
+		if (_reverse_rotate(stack_b))
+			write(1, "rrb\n", 4);
+	}
+	else if (cmd_case == RRR)
+	{
+		_reverse_rotate(stack_a);
+		_reverse_rotate(stack_b);
+		write(1, "rrr\n", 4);
+	}
 }

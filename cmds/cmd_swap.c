@@ -24,21 +24,22 @@ static int	_swap(t_stack *stack)
 	return (1);
 }
 
-void	swap(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case)
+void	swap(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case)
 {
-	if (stack_case == STACK_A)
+	if (cmd_case == SA)
 	{
 		if (_swap(stack_a))
 			write(1, "sa\n", 3);
 	}
-	else if (stack_case == STACK_B)
+	else if (cmd_case == SB)
 	{
 		if (_swap(stack_b))
 			write(1, "sb\n", 3);
 	}
-	else if (stack_case == STACK_BOTH)
+	else if (cmd_case == SS)
 	{
-		if (_swap(stack_a) && _swap(stack_b))
-			write(1, "ss\n", 3);
+		_swap(stack_a);
+		_swap(stack_b);
+		write(1, "ss\n", 3);
 	}
 }

@@ -36,6 +36,7 @@ DBG		=	-fsanitize=address -d3
 
 all: $(NAME)
 
+# TODO delete debug & flag
 debug: $(NAME)
 
 $(NAME) : $(OBJS)
@@ -44,6 +45,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB_DIR)/$(LIBFT) -o $(NAME) \
 	$(if $(filter debug, $(MAKECMDGOALS)), $(DBG))
 	make fclean -C $(LIB_DIR)
+	rm -rf $(OBJS)
 
 clean:
 	rm -rf $(OBJS)

@@ -39,12 +39,20 @@ typedef enum e_bool
 	TRUE	= 1
 }	t_bool;
 
-typedef enum e_stack_case
+typedef enum e_cmd_case
 {
-	STACK_A		= 0,
-	STACK_B		= 1,
-	STACK_BOTH	= 2
-}	t_stack_case;
+	SA		= 0,
+	SB		= 1,
+	SS		= 2,
+	PA		= 3,
+	PB		= 4,
+	RA		= 5,
+	RB		= 6,
+	RR		= 7,
+	RRA		= 8,
+	RRB		= 9,
+	RRR		= 10
+}	t_cmd_case;
 
 void	arg_validator(int argc, char **argv);
 void	error_exit(void);
@@ -54,21 +62,19 @@ void	arg_parser(int argc, char **argv, t_stack *stack_a);
 void	arg_indexer(t_stack *stack_a); // TODO delete
 void	show_stack(t_stack *stack); // TODO delete
 void	show_stack_top_bottom(t_stack *stack); // TODO delete
+void	show_stack_top_bottom_info(t_stack *stack); // TODO delete
 
 t_node	*new_node(int data);
 t_node	*last_node(t_stack *stack);
 
-void	swap(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case);
-void	push(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case);
+void	cmd(t_cmd_case cmd, t_stack *stack_a, t_stack *stack_b);
+void	swap(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
+void	push(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
 void	push_b_lowest(t_stack *stack_a, t_stack *stack_b);
 void	push_b_second_lowest(t_stack *stack_a, t_stack *stack_b);
 
-void	rotate_a(t_stack *stack_a, t_bool is_print);
-void	rotate_b(t_stack *stack_b, t_bool is_print);
-void	rotate_both(t_stack *stack_a, t_stack *stack_b);
-void	rotate_reverse_a(t_stack *stack_a, t_bool is_print);
-void	rotate_reverse_b(t_stack *stack_b, t_bool is_print);
-void	rotate_reverse_both(t_stack *stack_a, t_stack *stack_b);
+void	rotate(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
+void	reverse_rotate(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
 
 void	arrange_stack(t_stack *stack_a, t_stack *stack_b);
 int		identifty_case(t_stack *stack_a);

@@ -62,10 +62,26 @@ void	show_stack(t_stack *stack)
 //TODO show top delete
 void	show_stack_top_bottom(t_stack *stack)
 {
-	if (stack->top->value)
+	if (stack->top)
 		printf("stack top: %d \n", stack->top->value);
+	else
+		printf("stack top: null \n");
 	if (stack->bottom)
 		printf("stack bottom: %d \n", stack->bottom->value);
 	else
 		printf("stack bottom: null \n");
 }
+
+//TODO show top_bottom info delete
+void	show_stack_top_bottom_info(t_stack *stack)
+{
+	if (stack->top)
+		printf("stack top NEXT: %d \n", stack->top->next->value);
+	else
+		printf("stack top: null \n");
+	if (stack->bottom)
+		printf("stack bottom PREV: %d \n", stack->bottom->prev->value);
+	else
+		printf("stack bottom: null \n");
+}
+

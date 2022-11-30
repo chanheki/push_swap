@@ -33,7 +33,7 @@ t_node	*new_node(int data)
 	new_node->value = data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->index = static_index++;
+	new_node->index = static_index;//++;
 	return (new_node);
 }
 

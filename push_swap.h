@@ -55,7 +55,7 @@ typedef enum e_cmd_case
 }	t_cmd_case;
 
 void	arg_validator(int argc, char **argv);
-void	error_exit(void);
+void	error_exitor(void);
 void	init_stacks(t_stack *stack_a, t_stack *stack_b);
 void	arg_parser(int argc, char **argv, t_stack *stack_a);
 

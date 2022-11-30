@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	error_exit(void)
+void	error_exitor(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);

@@ -14,24 +14,24 @@
 
 static void	append_stack(t_stack *stack_a, int data)
 {
-	t_node	*temp;
-	t_node	*node;
+	t_node		*duplicate_check;
+	t_node		*node;
 
-	temp = stack_a->top;
+	duplicate_check = stack_a->top;
 	node = new_node(data);
-	while (temp)
+	while (duplicate_check)
 	{
-		if (temp->value == node->value)
-			error_exit();
-		temp = temp->next;
+		if (duplicate_check->value == node->value)
+			error_exitor();
+		duplicate_check = duplicate_check->next;
 	}
-	if (stack_a->size == 0)
-		stack_a->top = node;
+	if (stack_a->size != 0)
+	{
+		stack_a->bottom->next = node;
+		node->prev = stack_a->bottom;
+	}
 	else
-	{
-		node->prev = last_node(stack_a);
-		last_node(stack_a)->next = node;
-	}
+		stack_a->top = node;
 	stack_a->bottom = node;
 	stack_a->size++;
 }

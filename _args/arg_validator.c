@@ -24,7 +24,6 @@ static	int	digit_checker(char *str)
 	}
 	return (1);
 }
-
 static int	int_checker(char *str)
 {
 	long long	check;
@@ -50,7 +49,7 @@ static	int	white_space_checker(char *str)
 		temp++;
 	}
 	if (index == ft_strlen(str))
-		error_exit();
+		error_exitor();
 	return (1);
 }
 
@@ -69,7 +68,7 @@ void	arg_validator(int argc, char **argv)
 	char	*separated_arg;
 
 	if (argc < 1)
-		error_exit();
+		error_exitor();
 	index = 1;
 	while (index < argc)
 	{
@@ -80,7 +79,7 @@ void	arg_validator(int argc, char **argv)
 		{
 			separated_arg = *splited;
 			if (!arg_checker(separated_arg))
-				error_exit();
+				error_exitor();
 			free(*splited);
 			splited++;
 		}

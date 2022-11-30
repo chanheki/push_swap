@@ -16,6 +16,8 @@ static void	push_operator(t_stack *stack, t_node *temp)
 {
 	temp->prev = NULL;
 	temp->next = stack->top;
+	if (stack->top)
+		stack->top->prev = temp;
 	stack->top = temp;
 	stack->size++;
 	if (stack->size == 1)
@@ -49,14 +51,14 @@ static int	_push(t_stack *stack_push, t_stack *stack_pop)
 	return (1);
 }
 
-void	push(t_stack *stack_a, t_stack *stack_b, t_stack_case stack_case)
+void	push(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case)
 {
-	if (stack_case == STACK_A)
+	if (cmd_case == PA)
 	{
 		if (_push(stack_a, stack_b))
 			write(1, "pa\n", 3);
 	}
-	else if (stack_case == STACK_B)
+	else if (cmd_case == PB)
 	{
 		if (_push(stack_b, stack_a))
 			write(1, "pb\n", 3);

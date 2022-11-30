@@ -24,26 +24,17 @@ void	init_stacks(t_stack *stack_a, t_stack *stack_b)
 
 t_node	*new_node(int data)
 {
-	t_node	*new_node;
+	t_node		*new_node;
+	static int	static_index = 0;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
-		error_exit();
+		error_exitor();
 	new_node->value = data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->index = 0;
+	new_node->index = static_index++;
 	return (new_node);
-}
-
-t_node	*last_node(t_stack *stack)
-{
-	t_node	*node;
-
-	node = stack->top;
-	while (node->next != NULL)
-		node = node->next;
-	return (node);
 }
 
 //TODO show stack delete
@@ -52,9 +43,9 @@ void	show_stack(t_stack *stack)
 	t_node	*node;
 
 	node = stack->top;
-	while (node != NULL)
+	while (node)
 	{
-		printf("%d \n", node->value);
+		printf("[index: %zu] %d \n", node->index, node->value);
 		node = node->next;
 	}
 }

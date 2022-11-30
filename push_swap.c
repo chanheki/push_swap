@@ -19,11 +19,12 @@ int	main(int argc, char **argv)
 
 	init_stacks(&stack_a, &stack_b);
 	arg_validator(argc, argv);
-	// TODO parsing
 	arg_parser(argc, argv, &stack_a);
-	
-	//TODO: business
+	//TODO: model Radix
+	arg_indexer(&stack_a);
+	arrange_stack(&stack_a, &stack_b);
 
-	printf("- E N D P R O G R A M - \n");
+	//TODO: model Merge
+	
 	return (0);
 }

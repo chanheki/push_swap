@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:22:11 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 04:04:10 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 03:05:30 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	_reverse_rotate(t_stack *stack)
 {
-	t_node *temp;
-	
+	t_node	*temp;
+
 	if (stack->size <= 1)
 		return (0);
 	temp = stack->bottom->prev;

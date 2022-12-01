@@ -6,10 +6,9 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:21:49 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/29 23:13:54 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 06:12:17 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -39,6 +38,12 @@ typedef enum e_bool
 	TRUE	= 1
 }	t_bool;
 
+typedef enum e_order_case
+{
+	ASCENDING	= 0,
+	DESCENDING	= 1,
+}	t_order_case;
+
 typedef enum e_cmd_case
 {
 	SA		= 0,
@@ -65,9 +70,10 @@ void	show_stack_top_bottom(t_stack *stack); // TODO delete
 void	show_stack_top_bottom_info(t_stack *stack); // TODO delete
 
 t_node	*new_node(int data);
-t_node	*last_node(t_stack *stack);
+t_node	*pop(t_stack *stack);
+void	clear_stack(t_stack *stack_a, t_stack *stack_b);
 
-void	cmd(t_cmd_case cmd, t_stack *stack_a, t_stack *stack_b);
+int		cmd(t_cmd_case cmd, t_stack *stack_a, t_stack *stack_b);
 void	swap(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
 void	push(t_stack *stack_a, t_stack *stack_b, t_cmd_case cmd_case);
 void	push_b_lowest(t_stack *stack_a, t_stack *stack_b);
@@ -80,5 +86,13 @@ void	arrange_stack(t_stack *stack_a, t_stack *stack_b);
 int		identifty_case(t_stack *stack_a);
 void	arrange_under_5_args(t_stack *stack_a, t_stack *stack_b);
 void	arrange_big_args(t_stack *stack_a, t_stack *stack_b);
+
+int		is_sorted(t_stack *stack, size_t n);
+void	sort_stack(t_stack *a, t_stack *b);
+int		basis_merge(t_stack *a, t_stack *b);
+int		basis_rev_sort_b(t_stack *a, t_stack *b);
+int		basis_sort_a(t_stack *a, t_stack *b);
+int		basis_sort(t_stack *a, t_stack *b);
+int		size_identifier(int a, int b, int c, t_order_case order);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:22:18 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/29 23:21:49 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 02:41:01 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,6 @@ static void	push_operator(t_stack *stack, t_node *temp)
 	stack->size++;
 	if (stack->size == 1)
 		stack->bottom = temp;
-}
-
-static t_node	*pop(t_stack *stack)
-{
-	t_node	*ret_node;
-
-	ret_node = stack->top;
-	if (stack->size > 1)
-		stack->top = stack->top->next;
-	else
-	{
-		stack->top = NULL;
-		stack->bottom = NULL;
-	}
-	stack->size--;
-	return (ret_node);
 }
 
 static int	_push(t_stack *stack_push, t_stack *stack_pop)

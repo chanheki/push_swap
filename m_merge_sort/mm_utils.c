@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mr_arg_indexer.c                                   :+:      :+:    :+:   */
+/*   mm_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 12:27:06 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 03:07:36 by chanheki         ###   ########.fr       */
+/*   Created: 2022/12/02 03:05:11 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/02 05:42:06 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	arg_indexer(t_stack *stack_a)
+int	size_identifier(int a, int b, int c, t_order_case order)
 {
-	t_node	*temp;
-	t_node	*temp_2;
-
-	temp = stack_a->top;
-	while (temp)
+	if (!a || !b || !c)
+		return (0);
+	if (order == ASCENDING)
 	{
-		temp_2 = stack_a->top;
-		while (temp_2)
-		{
-			if (temp->value > temp_2->value)
-				temp->index++;
-			temp_2 = temp_2->next;
-		}
-		temp = temp->next;
+		if (a > b && a > c)
+			return (1);
+		else if (b > a && b > c)
+			return (2);
+		else
+			return (3);
+	}
+	else
+	{
+		if (a < b && a < c)
+			return (1);
+		else if (b < a && b < c)
+			return (2);
+		else
+			return (3);
 	}
 }

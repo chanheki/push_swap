@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:23:28 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/29 23:18:12 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 03:19:30 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,44 @@ t_node	*new_node(int data)
 	new_node->value = data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->index = static_index;//++;
+	new_node->index = static_index++; //TODO: indexing recent
 	return (new_node);
+}
+
+t_node	*pop(t_stack *stack)
+{
+	t_node	*ret_node;
+
+	ret_node = stack->top;
+	if (stack->size > 1)
+		stack->top = stack->top->next;
+	else
+	{
+		stack->top = NULL;
+		stack->bottom = NULL;
+	}
+	stack->size--;
+	return (ret_node);
+}
+
+void	clear_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*node;
+
+	while (stack_b->size)
+	{
+		node = pop(stack_b);
+		if (node)
+			break ;
+		free(node);
+	}
+	while (stack_a->size)
+	{
+		node = pop(stack_a);
+		if (node)
+			break ;
+		free(node);
+	}
 }
 
 //TODO show stack delete

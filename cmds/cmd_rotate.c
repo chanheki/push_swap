@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:22:08 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/24 04:12:55 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 03:05:22 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	_rotate(t_stack *stack)
 {
-	t_node *temp;
-	
+	t_node	*temp;
+
 	if (stack->size <= 1)
 		return (0);
 	temp = stack->top->next;

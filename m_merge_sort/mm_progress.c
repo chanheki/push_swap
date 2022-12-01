@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mr_arg_indexer.c                                   :+:      :+:    :+:   */
+/*   mm_progress.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 12:27:06 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 03:07:36 by chanheki         ###   ########.fr       */
+/*   Created: 2022/12/02 05:42:48 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/02 06:18:13 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	arg_indexer(t_stack *stack_a)
+void	sort_stack(t_stack *a, t_stack *b)
 {
-	t_node	*temp;
-	t_node	*temp_2;
+	// int		depth;
+	size_t	n;
 
-	temp = stack_a->top;
-	while (temp)
-	{
-		temp_2 = stack_a->top;
-		while (temp_2)
-		{
-			if (temp->value > temp_2->value)
-				temp->index++;
-			temp_2 = temp_2->next;
-		}
-		temp = temp->next;
-	}
+	if (is_sorted(a, a->size))
+		return ;
+	n = a->size;
+	if (n <= 6)
+		basis_sort(a, b);
 }

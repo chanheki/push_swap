@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 00:15:33 by chanheki          #+#    #+#             */
-/*   Updated: 2022/11/29 21:45:26 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/02 03:07:11 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static	int	digit_checker(char *str)
 	}
 	return (1);
 }
+
 static int	int_checker(char *str)
 {
 	long long	check;

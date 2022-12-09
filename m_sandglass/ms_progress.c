@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 00:50:09 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/10 04:08:45 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/10 04:46:51 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	a_to_b(t_stack *a, t_stack *b, int chunk, size_t i)
 	while (a->size != 0)
 	{
 		get_top_numb = get_top(a);
-		// printf("get top index: %zu, i: %zu, chunk: %d \n", get_top_numb, i, chunk);
 		if (get_top_numb <= i)
 		{
 			cmd(PB, a, b);
@@ -94,8 +93,6 @@ void	b_to_a(t_stack *a, t_stack *b)
 	int	length;
 
 	length = b->size - 1;
-	// printf("get b length => %d \n", length);
-
 	while (b->size != 0)
 	{
 		sort_b(a, b, length);

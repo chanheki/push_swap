@@ -6,20 +6,21 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 05:42:48 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 06:18:13 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/10 01:06:50 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_stack(t_stack *a, t_stack *b)
+int	calc_depth(size_t n)
 {
-	// int		depth;
-	size_t	n;
+	int	depth;
 
-	if (is_sorted(a, a->size))
-		return ;
-	n = a->size;
-	if (n <= 6)
-		basis_sort(a, b);
+	depth = 0;
+	while (n > 4)
+	{
+		n = n / 3 + (n % 3 > 0);
+		depth++;
+	}
+	return (depth);
 }

@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 05:41:22 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 06:21:08 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:59:40 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	basis_sort(t_stack *a, t_stack *b)
 		while (i--)
 			cmd(PB, a, b);
 		basis_sort_a(a, b);
-		basis_rev_sort_b(a, b);
+		basis_reverse_sort_b(a, b);
 		basis_merge(a, b);
 		return (1);
 	}
@@ -70,7 +70,7 @@ int	basis_sort_a(t_stack *a, t_stack *b)
 		return (0);
 }
 
-int	basis_rev_sort_b(t_stack *a, t_stack *b)
+int	basis_reverse_sort_b(t_stack *a, t_stack *b)
 {
 	if (b->size <= 1)
 		return (1);
@@ -78,10 +78,11 @@ int	basis_rev_sort_b(t_stack *a, t_stack *b)
 		return (b->top->value > b->top->next->value || cmd(SB, a, b));
 	else if (b->size == 3)
 	{
-		if (b->top->value < b->top->next->value
-			&& b->top->value < b->top->prev->value)
+		if (size_identifier(b->top->value, b->top->next->value, \
+								b->bottom->value, DESCENDING) == 1)
 			cmd(RB, a, b);
-		else if (b->top->next->value < b->top->prev->value)
+		else if (size_identifier(b->top->value, b->top->next->value, \
+								b->bottom->value, DESCENDING) == 2)
 			cmd(RRB, a, b);
 		if (b->top->value < b->top->next->value)
 			cmd(SB, a, b);
@@ -93,20 +94,20 @@ int	basis_rev_sort_b(t_stack *a, t_stack *b)
 
 int	basis_merge(t_stack *a, t_stack *b)
 {
-	size_t	rest[2];
+	size_t	len[2];
 
-	rest[0] = a->size;
-	rest[1] = b->size;
-	while (rest[0] + rest[1])
+	len[0] = a->size;
+	len[1] = b->size;
+	while (len[0] + len[1])
 	{
-		if (!rest[1])
-			rest[0] -= cmd(RRA, a, b);
-		else if (!rest[0])
-			rest[1] -= cmd(PA, a, b);
-		else if (a->top->prev->value > b->top->value)
-			rest[0] -= cmd(RRA, a, b);
+		if (!len[1])
+			len[0] -= cmd(RRA, a, b);
+		else if (!len[0])
+			len[1] -= cmd(PA, a, b);
+		else if (a->bottom->value > b->top->value)
+			len[0] -= cmd(RRA, a, b);
 		else
-			rest[1] -= cmd(PA, a, b);
+			len[1] -= cmd(PA, a, b);
 	}
 	return (1);
 }

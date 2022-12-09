@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:48:12 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 03:07:43 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:21:23 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	push_b_lowest(t_stack *stack_a, t_stack *stack_b)
 		cmd(RRA, stack_a, stack_b);
 		cmd(PB, stack_a, stack_b);
 	}
-	else {
+	else
+	{
 		while (stack_a->top)
 		{
 			if (stack_a->top->index == 0)

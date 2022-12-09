@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 01:23:28 by chanheki          #+#    #+#             */
-/*   Updated: 2022/12/02 03:19:30 by chanheki         ###   ########.fr       */
+/*   Updated: 2022/12/10 04:00:59 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_node	*new_node(int data)
 	new_node->value = data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->index = static_index++; //TODO: indexing recent
+	new_node->index = static_index; //TODO: indexing recent ++
 	return (new_node);
 }
 
@@ -70,6 +70,41 @@ void	clear_stack(t_stack *stack_a, t_stack *stack_b)
 		if (node)
 			break ;
 		free(node);
+	}
+}
+
+void	large_command(t_stack *a, t_stack *b)
+{
+	int				i;
+	int				x;
+	int				chunk;
+
+	i = 0;
+	x = a->size;
+	chunk = 0.000000053 * (x * x) + 0.03 * x + 14.5;
+	// printf("chunk = %d \n", chunk);
+	// printf("~~~> stack A \n");
+	// show_stack(a);
+	a_to_b(a, b, chunk, i);
+	// printf("~~~~> stack B \n");
+	// show_stack(b);
+	b_to_a(a, b);
+}
+
+void	sort_stack(t_stack *a, t_stack *b)
+{
+	// int		depth;
+	size_t	i;
+	size_t	n;
+	i = 0;
+	n = a->size;
+	if (is_sorted(a, n))
+		return ;
+	if (n <= 6)
+		basis_sort(a, b);
+	else
+	{
+		large_command(a, b);
 	}
 }
 
@@ -110,5 +145,17 @@ void	show_stack_top_bottom_info(t_stack *stack)
 		printf("stack bottom PREV: %d \n", stack->bottom->prev->value);
 	else
 		printf("stack bottom: null \n");
+}
+
+
+//TODO show top_bottom info delete
+void	checker_argc_argv(int argc, char **argv)
+{
+	printf("argc: %d \n", argc);
+	for (int i = 0 ; i <= argc ; i++)
+	{
+		printf("%d -> %s \n", i, *argv);
+		argv++;
+	}
 }
 

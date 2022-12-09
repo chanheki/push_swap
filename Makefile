@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 03:01:09 by chanheki          #+#    #+#              #
-#    Updated: 2022/12/02 05:49:08 by chanheki         ###   ########.fr        #
+#    Updated: 2022/12/10 01:10:16 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,18 @@ MR_SRCS	=	m_radix_sort/mr_arrange_big_args.c\
 
 MM_SRCS =	m_merge_sort/mm_progress.c\
 			m_merge_sort/mm_sort.c\
-			m_merge_sort/mm_utils.c
+			m_merge_sort/mm_utils.c\
+			m_sandglass/ms_progress.c
+# Colors
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
 
 all: $(NAME)
 
@@ -62,6 +73,9 @@ $(NAME) : $(OBJS)
 	$(if $(filter merge, $(MAKECMDGOALS)), $(MM_SRCS))
 	make fclean -C $(LIB_DIR)
 	rm -rf $(OBJS)
+	@echo "$(YELLOW)===============================================$(DEF_COLOR)"
+	@echo "$(YELLOW)|         Push_Swap compile finished.         |$(DEF_COLOR)"
+	@echo "$(YELLOW)===============================================$(DEF_COLOR)"
 
 clean:
 	rm -rf $(OBJS)

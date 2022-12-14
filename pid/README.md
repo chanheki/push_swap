@@ -1,2 +1,4 @@
 # push_swap
-## 2022.11.24
+### model merge sort - pid
+### model radix sort - complete
+### model sandglass - complete

@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   arg_indexer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:12:33 by chanheki          #+#    #+#             */
-/*   Updated: 2022/09/15 23:32:21 by chanheki         ###   ########.fr       */
+/*   Created: 2022/12/13 21:31:28 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/14 00:03:36 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	arg_indexer(t_stack *stack_a)
 {
-	if (!new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	t_node	*temp;
+	t_node	*temp_2;
+
+	temp = stack_a->top;
+	while (temp)
+	{
+		temp_2 = stack_a->top;
+		while (temp_2)
+		{
+			if (temp->value > temp_2->value)
+				temp->index++;
+			temp_2 = temp_2->next;
+		}
+		temp = temp->next;
+	}
 }

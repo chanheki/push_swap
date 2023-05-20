@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ms_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:12:39 by chanheki          #+#    #+#             */
-/*   Updated: 2022/09/15 23:32:22 by chanheki         ###   ########.fr       */
+/*   Created: 2022/12/10 04:55:34 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/13 23:47:39 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+static void	sandglass_sort(t_stack *a, t_stack *b)
 {
-	t_list	*tmp;
+	a_to_b(a, b);
+	b_to_a(a, b);
+}
 
-	if (!lst || !del)
+void	sort_stack(t_stack *a, t_stack *b)
+{
+	size_t	i;
+	size_t	n;
+
+	if (!a->size)
 		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
-	}
+	i = 0;
+	n = a->size;
+	if (is_sorted(a, n))
+		return ;
+	if (n <= 6)
+		basis_sort(a, b);
+	else
+		sandglass_sort(a, b);
 }

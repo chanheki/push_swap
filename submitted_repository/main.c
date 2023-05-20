@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:12:21 by chanheki          #+#    #+#             */
-/*   Updated: 2022/09/15 23:33:36 by chanheki         ###   ########.fr       */
+/*   Created: 2022/11/24 01:53:21 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/13 21:02:44 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	main(int argc, char **argv)
 {
-	t_list	*last;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		last = ft_lstlast(*lst);
-		last -> next = new;
-	}
+	init_stacks(&stack_a, &stack_b);
+	arg_validator(argc, argv);
+	arg_parser(argc, argv, &stack_a);
+	arg_indexer(&stack_a);
+	sort_stack(&stack_a, &stack_b);
+	clear_stack(&stack_a, &stack_b);
+	return (0);
 }

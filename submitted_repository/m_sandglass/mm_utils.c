@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   mm_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:12:45 by chanheki          #+#    #+#             */
-/*   Updated: 2022/09/15 23:32:27 by chanheki         ###   ########.fr       */
+/*   Created: 2022/12/02 03:05:11 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/13 23:09:44 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	size_identifier(int a, int b, int c, t_order_case order)
 {
-	while (lst)
+	if (order == ASCENDING)
 	{
-		f(lst -> content);
-		lst = lst -> next;
+		if (a > b && a > c)
+			return (1);
+		else if (b > a && b > c)
+			return (2);
+		else
+			return (3);
+	}
+	else
+	{
+		if (a < b && a < c)
+			return (1);
+		else if (b < a && b < c)
+			return (2);
+		else
+			return (3);
 	}
 }

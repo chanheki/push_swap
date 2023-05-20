@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   error_exitor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:12:42 by chanheki          #+#    #+#             */
-/*   Updated: 2022/09/15 23:32:24 by chanheki         ###   ########.fr       */
+/*   Created: 2022/11/24 01:55:30 by chanheki          #+#    #+#             */
+/*   Updated: 2022/12/07 19:10:01 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	error_exitor(void)
 {
-	if (!lst || !del)
-		return ;
-	del(lst -> content);
-	free(lst);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
